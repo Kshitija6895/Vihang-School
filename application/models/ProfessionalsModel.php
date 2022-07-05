@@ -7,7 +7,8 @@ class ProfessionalsModel extends CI_Model
 
     public function Professionals_Insert($data)
     {
-        return $this->db->insert('professionals', $data);
+         $this->db->insert('professionals', $data);
+        return $this->db->insert_id();
     }
 
     /* For Delete */
@@ -42,5 +43,10 @@ class ProfessionalsModel extends CI_Model
                 ->get();
             return $sel->row();
         }
+    }
+
+    public function uploadPaymentScreenshot($data)
+    {
+        return $this->db->insert('ProfestonalTransactions', $data);
     }
 }

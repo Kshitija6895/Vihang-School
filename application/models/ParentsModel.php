@@ -7,7 +7,8 @@ class ParentsModel extends CI_Model
 
     public function Parents_Insert($data)
     {
-        return $this->db->insert('parents', $data);
+         $this->db->insert('parents', $data);
+         return $this->db->insert_id();
     }
 
     /* For Delete */

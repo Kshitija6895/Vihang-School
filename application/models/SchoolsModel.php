@@ -7,7 +7,8 @@ class SchoolsModel extends CI_Model
 
     public function Schools_Insert($data)
     {
-        return $this->db->insert('schools', $data);
+         $this->db->insert('schools', $data);
+        return $this->db->insert_id();
     }
 
     /* For Delete */
@@ -42,5 +43,9 @@ class SchoolsModel extends CI_Model
                 ->get();
             return $sel->row();
         }
+    }
+    public function uploadPaymentScreenshot($data)
+    {
+        return $this->db->insert('schoolTransactions', $data);
     }
 }

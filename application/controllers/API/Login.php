@@ -14,16 +14,15 @@ class Login extends REST_Controller {
     public function index_post()
     {
     	$loginData=null;
-    	$name=$this->input->post('name');
-    	$password=$this->input->post('password');
+    	$name=$this->post('parentNumber');
+    	$password=$this->post('parentPassword');
     	$loginData=$this->LoginModel->Login($name,$password);
     	if($loginData!=null){
-    		$loginData['loginStatus']=true;
-    		$this->session->set_userdata($loginData);
+    		$loginData['status']=true;
+    		$loginData['user']=$loginData;
     	}
     	else{
-    		$loginData['loginStatus']=false;
-    		$this->session->sess_destroy();		
+    		$loginData['status']=false;	
     	}
     	
     	$this->response($loginData, REST_Controller::HTTP_OK);
